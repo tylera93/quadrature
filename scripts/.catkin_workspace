@@ -1,0 +1,40 @@
+#!/usr/bin/python
+# Object for decoding/estimating Quadrature decodings.
+# Framework by: Jason Ziglar <jpz@vt.edu>
+# Edited by Tyler Atzingen <tylera93@vt.edu>
+
+class QuadratureEstimator:
+  def __init__(self, ticks_per_revolution):
+    self.ticks_per_revolution = ticks_per_revolution
+    self._position = 0
+    self._velocity = 0
+    self.a_old = 0
+    self.b_old = 0
+    time_old = 0
+
+  def update(self, a_state, b_state, time):
+  
+    if (a_state == 1 and b_old == 0) or (a_state == 0 and b_old == 1):
+      position += 1
+
+    if (a_state == 1 and b_old == 1) or (a_state == 0 and b_old == 0):
+      position -= 1
+
+    # Need the old states and the old time for position and velocity calculations
+    a_old = a_state
+    b_old = b_state
+    time_old = time
+
+    # Calculates the position and velocity
+    self._position = position 
+    self._velocity = position / (time - time_old)
+    
+	
+  @property
+  def position(self):
+      return self._position
+  @property
+  def velocity(self):
+      return self._velocity
+
+
